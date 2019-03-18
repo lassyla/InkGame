@@ -32,7 +32,7 @@ public class PixelSetter : MonoBehaviour {
 	}
 
 	void Start()
-    {
+    	{
 		GameObject go = GameObject.Find ("Particle System"); 
 		ps = (ParticleSystem) go.GetComponent("ParticleSystem");; 
 		planeTransform = gameObject.transform;
@@ -43,11 +43,11 @@ public class PixelSetter : MonoBehaviour {
 		var emission = ps.emission; 
 		emission.rateOverDistance = 0; 
 
-        texture = new Texture2D(resolution, resolution, 
-								textureFormat: TextureFormat.RGBA32, 
-								mipChain: false);
+        	texture = new Texture2D(resolution, resolution, 
+					textureFormat: TextureFormat.RGBA32, 
+					mipChain: false);
 		texture.filterMode = FilterMode.Point;
-        GetComponent<Renderer>().material.mainTexture = texture;
+        	GetComponent<Renderer>().material.mainTexture = texture;
 
 		for (var x = 0; x < resolution; x++) {
 			for (var y = 0; y < resolution; y++) {
@@ -55,7 +55,7 @@ public class PixelSetter : MonoBehaviour {
 			}
 		}
 
-        texture.Apply();
+        	texture.Apply();
 	}
 
 	// Called whenever the player collides with an ink monster.
@@ -83,9 +83,9 @@ public class PixelSetter : MonoBehaviour {
 		StartCoroutine("DrawPoint"); 
 
 		if (Input.GetKeyDown("space"))
-        {
+        	{
 			StartCoroutine("Fill"); 
-        }
+        	}
 
 		if (Input.GetKeyDown("e")) 
 		{
@@ -97,7 +97,6 @@ public class PixelSetter : MonoBehaviour {
 			byte[] bytes = texture.EncodeToPNG (); 
 			System.IO.File.WriteAllBytes (Application.dataPath + "/../image.png", bytes); 
 		}
-
 	}
 
 	// Constantly draws a trail behind the player
